@@ -6,6 +6,7 @@ class CreateMetrics < ActiveRecord::Migration[7.1]
       t.string :prefix
       t.string :amount
       t.string :label
+      t.belongs_to :project, null: false, foreign_key: true
 
       t.timestamps
     end

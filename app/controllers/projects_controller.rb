@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @project.metrics.build
   end
 
   # GET /projects/1/edit
@@ -65,6 +66,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name, metrics_attributes: [:id, :name, :prefix, :number, :amount, :label, :_destroy])
     end
 end

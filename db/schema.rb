@@ -17,8 +17,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_163938) do
     t.string "prefix"
     t.string "amount"
     t.string "label"
+    t.integer "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_metrics_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -29,5 +31,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_163938) do
     t.index ["metric_id"], name: "index_projects_on_metric_id"
   end
 
+  add_foreign_key "metrics", "projects"
   add_foreign_key "projects", "metrics"
 end

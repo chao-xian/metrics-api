@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <%= @project.name %>
+<% @project.metrics.each do |metric| %>
+  <%= metric.name %>
+  <%= metric.number %>
+<% end %>
 
 <div>
   <%= link_to "Edit this project", edit_project_path(@project) %> |

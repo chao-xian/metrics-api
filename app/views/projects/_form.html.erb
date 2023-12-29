@@ -11,7 +11,37 @@
     </div>
   <% end %>
 
+  <%= form.label :name, "Project Name: " %>
   <%= form.text_field :name %>
+
+  <% @project.metrics.each do |metric| %>
+    <%= form.fields_for :metrics do |metric_form| %>
+      <div>
+        <%= metric_form.label :name, "Metric Name: " %>
+        <%= metric_form.text_field :name %>
+      </div>
+
+      <div>
+        <%= metric_form.label :prefix, "Prefix: " %>
+        <%= metric_form.text_field :prefix %>
+      </div>
+
+      <div>
+        <%= metric_form.label :number, "Number: " %>
+        <%= metric_form.text_field :number %>
+      </div>
+
+      <div>
+        <%= metric_form.label :amount, "Amount: " %>
+        <%= metric_form.text_field :amount %>
+      </div>
+
+      <div>
+        <%= metric_form.label :label, "Label: " %>
+        <%= metric_form.text_field :label %>
+      </div>
+    <% end %>
+  <% end %>
 
   <div>
     <%= form.submit %>
